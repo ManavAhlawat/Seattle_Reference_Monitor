@@ -1,0 +1,18 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+# Open File Function Call
+myfile=ABopenfile("testfile.txt",True)  
+
+# Write valid data to the file
+myfile.writeat("SpentestingE",0)
+
+try:
+ assert('SpentestingE' == myfile.readat(None,0))
+ log("Data write to the file is before closing the file")	
+ myfile.close()
+
+except:
+ myfile.close()

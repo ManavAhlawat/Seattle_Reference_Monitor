@@ -1,0 +1,21 @@
+if "testfile.txt.a" in listfiles():
+  removefile("testfile.txt.a")
+if "testfile.txt.b" in listfiles():
+  removefile("testfile.txt.b")
+
+# Open File Function Call
+myfile=ABopenfile("testfile.txt",True)  
+
+myfile.writeat("SpentestingE",0)				#writing valid data to the file
+myfile.writeat("S123456",0)						#overwriting invalid data to the file
+myfile.close()
+
+myfile=ABopenfile("testfile.txt",True)
+
+try:
+ assert('SE' == myfile.readat(None,0))	#checking for SE because invalid data has been written to the file
+ myfile.close()
+
+except:
+ myfile.close()
+ log("Invalid data write to the file is successfull via the security layer")
